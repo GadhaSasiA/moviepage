@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}loginpage{% endblock title %}
+{% block content %}
+<style>
+    body{background-color: black;}
+    .a {background-color: black; color: beige; width:400px; height: 140px; margin-top: 80px;margin-left: 380px;border-radius: 5px;}
+    .ah3{margin-left: 10px;}
+    button{margin-left: 170px;}
+</style>
+<div class="a">
+    {% if user.is_authenticated %}
+        <h3>Hello<b> {{ user.username }} </b>You are successfully Logged in</h3>
+    {% else %}
+        <p>You need to log in to access this content.</p>
+    {% endif %}
+    <a href="{% url 'movie_times' %}">
+        <button type="button">Back</button>
+    </a>
+</div>
+{% endblock content %}

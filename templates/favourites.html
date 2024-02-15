@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{%block title%}Favourites{%endblock title%}
+{% block content %}
+    <h2>Favourites</h2>
+
+    {% for movie in favourite_movies %}
+        <div>
+            <h3>{{ movie.movie_name }}</h3>
+            <p>Language: {{ movie.language }}</p>
+            <p>Genre: {{ movie.genre }}</p>
+            <p>Duration: {{ movie.duration }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}

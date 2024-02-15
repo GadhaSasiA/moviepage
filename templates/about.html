@@ -1,0 +1,44 @@
+ {%extends 'base.html'%}
+{%load static%}
+{%block title%}About{%endblock title%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <style> 
+    h1{background-color: black;color: aquamarine;}
+    .card-title{color: rgb(236, 211, 177);}
+    body{width: 100%;}
+    .col{width: 1200px;margin-left: 5px;}
+     </style>
+</head>
+<body>
+{%block content%}
+<div class="row text-secondary"><br><br>
+    <h1>Movie Lists</h1>
+  {% for d in about %}
+
+    <div class="col bg-dark">
+        <div class="card rounded-2 bg-dark" style="width: 18rem;">
+            <div class="card-body">
+                <img src="{{d.img}}" height="250px" class="card-img-top">
+                <h5  class="card-title">{{d.movie_name}}</h5>
+                <p class="card-title">{{d.language}}</p>
+                <h5 class="card-title">{{d.genre}}</h5>
+                <h5 class="card-title">{{d.duration}}</h5>
+                <form method="post" action="{% url 'add_to_favourite' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="movie_id" value="{{ d.id }}">
+                    <button type="submit" class="btn btn-danger">Add to Favourite</button>
+                </form>
+                <button type="submit" class="btn btn-dark text-light">Details</button>
+            </a>
+             </div>
+        </div>
+    </div>
+ {% endfor %}
+</div>
+</body>
+{%endblock content%}
